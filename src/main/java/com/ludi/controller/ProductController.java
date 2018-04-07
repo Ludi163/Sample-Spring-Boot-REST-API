@@ -35,7 +35,7 @@ public class ProductController {
     public Product read(@PathVariable(value = "id") long id) throws ProductNotFoundException {
         Product product = productService.read(id);
         if (product == null) {
-            throw new ProductNotFoundException("Product with id: " + id + " not found.");
+            throw new ProductNotFoundException("Can't find product with ID: " + id + ".");
         }
         return product;
     }

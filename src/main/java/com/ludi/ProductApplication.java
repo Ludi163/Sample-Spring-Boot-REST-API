@@ -1,6 +1,5 @@
 package com.ludi;
 
-import com.ludi.domain.Address;
 import com.ludi.domain.Manufacturer;
 import com.ludi.domain.Product;
 import com.ludi.repository.ManufacturerRepository;
@@ -9,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
@@ -23,9 +23,8 @@ public class ProductApplication {
     CommandLineRunner runner(ManufacturerRepository manufacturerRepository, ProductRepository productRepository) {
         return args -> {
 
-            Manufacturer manufacturer1 = new Manufacturer("Ludi S.A.", new Address());
-            Manufacturer manufacturer2 = new Manufacturer("REST API",
-                    new Address("Rested Street", "Rest City", "12-345", "Rest Country"));
+            Manufacturer manufacturer1 = new Manufacturer("Ludi S.A.", "Ludi's country");
+            Manufacturer manufacturer2 = new Manufacturer("REST API","REST's country");
 
             manufacturerRepository.save(manufacturer1);
             manufacturerRepository.save(manufacturer2);

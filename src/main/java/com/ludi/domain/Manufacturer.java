@@ -1,5 +1,6 @@
 package com.ludi.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,21 +12,22 @@ public class Manufacturer {
     @GeneratedValue
     private Long id;
     private String name;
-    private Address address;
+    @Column(columnDefinition = "TEXT")
+    private String country;
 
     @SuppressWarnings("unused")
     public Manufacturer() {}
 
-    public Manufacturer(String name, Address address) {
+    public Manufacturer(String name, String country) {
         this.name = name;
-        this.address = address;
+        this.country = country;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,19 +39,17 @@ public class Manufacturer {
         this.name = name;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getCountry() {
+        return country;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
     public String toString() {
         return "Manufacturer{" +
-                "name='" + name + '\'' +
-                ", address=" + address +
-                '}';
+                "name='" + name + '\'' + '}';
     }
 }
